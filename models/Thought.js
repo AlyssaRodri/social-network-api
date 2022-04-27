@@ -29,6 +29,12 @@ const thoughtSchema = new Schema(
     }
 )
 
+thoughtSchema
+    .virtual("reactionCount")
+    .get( function (){
+        return this.reactions.length
+    })
+
 
 //Here I create the Reaction Schema. It does not have it's own because it only exists inside of thought
 
@@ -36,7 +42,7 @@ const reactionSchema = new Schema (
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            
+
         },
         reactionBody: {
             type: String,
