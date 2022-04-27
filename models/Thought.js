@@ -1,5 +1,6 @@
-const { Schema, model } = require('mongoose');
-const Thought = require('./Thought');
+const { Schema, model, Types } = require('mongoose');
+const { stringify } = require('querystring');
+const User = require('./user');
 
 const thoughtSchema = new Schema(
     {
@@ -14,9 +15,16 @@ const thoughtSchema = new Schema(
             default: Date.now,
             //Getter method to format the timestamp on query
         },
-        user: {
+        username: {
             type: String,
-            required: true
+            required: true,
+        },
+        reactions: [reactionSchema]
+    },
+    {
+        toJSON: {
+          getters: true,
+          virtuals: true
         }
     }
 )
@@ -26,8 +34,34 @@ const thoughtSchema = new Schema(
 
 const reactionSchema = new Schema (
     {
-        
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+            maxLength: 280,
+        },
+        username: {
+            type: String,
+            required: true,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+
+        }
+    },
+    {
+        toJSON:{
+            getters: true
+        }
     }
 )
+
+
+const Thought = model("thought", thoughtSchema);
+
 
 module.exports = Thought
