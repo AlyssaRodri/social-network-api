@@ -59,10 +59,44 @@ async function removeUserById (req, res){
     }
 }
 
+// Friends Section
+
+//Add friend to Friend List
+async function addFriendById (req, res){
+    try {
+        const newFriend = await User.findByIdAndUpdate(
+            {_id: req.params.userId},
+            {$addToSet: { friends: req.params.friendId}},
+            { new: true}
+        )
+        return res.json(newFriend)
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json(error)
+    }
+}
+
+// Remove a friend from friend list
+async function deleteFriendById (req, res){
+    try {
+        const deleteFriend = await User.findByIdAndUpdate(
+            {_id: req.params.userId},
+            {$pull: { friends: req.params.friendId}},
+            { new: true}        
+        )
+        return res.json(deleteFriend)
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json(error)
+    }
+}
+
 module.exports = {
     getUsers,
     getOneUser,
     createUser,
     updateUserById,
-    removeUserById
+    removeUserById,
+    addFriendById,
+    deleteFriendById
 }
