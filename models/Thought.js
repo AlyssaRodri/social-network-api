@@ -1,4 +1,4 @@
-const { Schema, Model, Types, ObjectId } = require('mongoose');
+const { Schema, model, Types, ObjectId } = require('mongoose');
 
 //Here I create the Reaction Schema. It does not have it's own because it only exists inside of thought
 
@@ -65,7 +65,7 @@ thoughtSchema
 
     
 
-const Thought = Model("thought", thoughtSchema);
+const Thought = model("thought", thoughtSchema);
 
 
 module.exports = Thought
