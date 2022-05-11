@@ -12,7 +12,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+      match: [/^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/] // Regex to validate email format
     },
     thoughts: [  { type: Schema.Types.ObjectId, ref: 'Thought' } ],
     friends: [{ type: Schema.Types.ObjectId, ref: 'User'}]
