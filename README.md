@@ -23,8 +23,8 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 2. Install all dependencies by running "npm install" in your integrated terminal
 
 ### Video
-Video One (https://youtu.be/9DE2569eFcQ)
-Video Two (https://youtu.be/_AyQq0qAC3A)
+[Watch Video One Here](https://youtu.be/9DE2569eFcQ)
+[Video Two](https://youtu.be/_AyQq0qAC3A)
 
 ### Credits
 For this project I used a lot of work from the mini project in the NoSQL unit. I was also greatly assisted by my fellow classmate, Kelly Jeffries.
